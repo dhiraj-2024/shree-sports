@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary: #FF6000;
+  /* Primary orange */
+  --secondary: #FFE6C7;
+  /* Cream/light orange */
+  --dark: #090040;
+  /* Deep navy */
+  --gray: #454545;
+  /* Dark gray */
+  --light: #FFFFFF;
+  /* White */
+  --accent: #FFA559;
+  /* Secondary accent (lighter orange) */
+  --error: #FF3E41;
+  /* Red for errors */
+  --success: #4CAF50;
+  /* Green for success */
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  /* color: var(--dark); */
+}
+
+/* .input {
+  @apply w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white;
+} */
