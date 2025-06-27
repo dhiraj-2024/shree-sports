@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "src": "/images/gallery/competitions/competition1.jpg",
+    "alt": "Students competing at regional championship",
+    "category": "Competitions",
+    "caption": "Our team at the 2023 Regional Championships"
+  },
+  {
+    "id": 2,
+    "src": "/images/gallery/competitions/competition2.jpg",
+    "alt": "Gold medal performance on parallel bars",
+    "category": "Competitions",
+    "caption": "First place finish on parallel bars"
+  },
+  {
+    "id": 3,
+    "src": "/images/gallery/training/training1.jpg",
+    "alt": "Coach demonstrating floor routine",
+    "category": "Training",
+    "caption": "Coach Priya teaching advanced techniques"
+  },
+  {
+    "id": 4,
+    "src": "/images/gallery/training/training2.jpg",
+    "alt": "Young gymnasts practicing balance beam",
+    "category": "Training",
+    "caption": "Beginner class mastering beam skills"
+  },
+  {
+    "id": 5,
+    "src": "/images/gallery/events/event1.jpg",
+    "alt": "Annual sports day celebration",
+    "category": "Events",
+    "caption": "2023 Annual Sports Day"
+  },
+  {
+    "id": 6,
+    "src": "/images/gallery/events/event2.jpg",
+    "alt": "Parents watching student showcase",
+    "category": "Events",
+    "caption": "Parent-Teacher Exhibition Day"
+  },
+  {
+    "id": 7,
+    "src": "/images/gallery/students/student1.jpg",
+    "alt": "Student performing vault",
+    "category": "Students",
+    "caption": "Rahul mastering the vault technique"
+  },
+  {
+    "id": 8,
+    "src": "/images/gallery/students/student2.jpg",
+    "alt": "Student receiving award",
+    "category": "Students",
+    "caption": "Nakul receiving gold medal"
+  },
+  {
+    "id": 9,
+    "src": "/images/gallery/facility/facility1.jpg",
+    "alt": "Indoor training facility",
+    "category": "Facility",
+    "caption": "Our state-of-the-art training center"
+  },
+  {
+    "id": 10,
+    "src": "/images/gallery/facility/facility2.jpg",
+    "alt": "New equipment installation",
+    "category": "Facility",
+    "caption": "Upgraded spring floors installed"
+  }
+
+]

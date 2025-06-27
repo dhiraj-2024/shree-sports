@@ -1,122 +1,114 @@
 // /Users/rajputdhiraj/Desktop/shree-sports-academy/server/controllers/newsController.js
-const News = require("../models/News");
+const News = require('../models/News');
+const { validationResult } = require('express-validator');
 
-// @desc    Get all news
-// @route   GET /api/news
-// @access  Public
-exports.getAllNews = async (req, res) => {
-  try {
-    const news = await News.find({ status: "published" }).sort("-createdAt");
-    res.json(news);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
-  }
-};
-
-// @desc    Get featured news
-// @route   GET /api/news/featured
-// @access  Public
-exports.getFeaturedNews = async (req, res) => {
-  try {
-    const featuredNews = await News.find({
-      status: "published",
-      isFeatured: true,
-    })
-      .limit(3)
-      .sort("-createdAt");
-    res.json(featuredNews);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
-  }
-};
-
-// @desc    Get single news item
-// @route   GET /api/news/:id
-// @access  Public
-exports.getNewsById = async (req, res) => {
-  try {
-    const newsItem = await News.findById(req.params.id);
-
-    if (!newsItem || newsItem.status !== "published") {
-      return res.status(404).json({ error: "News not found" });
-    }
-
-    res.json(newsItem);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
-  }
-};
-
-// @desc    Create news
-// @route   POST /api/news
-// @access  Private/Admin
+// Create new news
 exports.createNews = async (req, res) => {
   try {
-    const { title, content, imageUrl, isFeatured, tags } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
-    const newsItem = new News({
-      title,
-      content,
-      imageUrl,
-      isFeatured: isFeatured || false,
-      tags: tags || [],
-      author: req.user.name || "Admin",
-    });
-
-    const createdNews = await newsItem.save();
-    res.status(201).json(createdNews);
+    const news = new News(req.body);
+    await news.save();
+    res.status(201).json({ success: true, data: news });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
+    res.status(400).json({ success: false, error: err.message });
   }
 };
 
-// @desc    Update news
-// @route   PUT /api/news/:id
-// @access  Private/Admin
+// Get all news (paginated)
+exports.getAllNews = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
+
+    const [news, total] = await Promise.all([
+      News.find().sort({ createdAt: -1 }).skip(skip).limit(limit),
+      News.countDocuments()
+    ]);
+
+    res.json({
+      success: true,
+      data: news,
+      pages: Math.ceil(total / limit),
+      page,
+      total
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+// Get featured news
+exports.getFeaturedNews = async (req, res) => {
+  try {
+    const featuredNews = await News.find({ isFeatured: true, status: 'published' })
+      .sort({ publishedAt: -1 })
+      .limit(3);
+    res.json({ success: true, data: featuredNews });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+// Get single news by ID
+exports.getNewsById = async (req, res) => {
+  try {
+    const news = await News.findById(req.params.id);
+    if (!news) {
+      return res.status(404).json({ success: false, error: 'News not found' });
+    }
+    res.json({ success: true, data: news });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+// Update news
 exports.updateNews = async (req, res) => {
   try {
-    const { title, content, imageUrl, isFeatured, tags, status } = req.body;
-
-    const newsItem = await News.findById(req.params.id);
-
-    if (!newsItem) {
-      return res.status(404).json({ error: "News not found" });
+    const news = await News.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+    if (!news) {
+      return res.status(404).json({ success: false, error: 'News not found' });
     }
-
-    newsItem.title = title || newsItem.title;
-    newsItem.content = content || newsItem.content;
-    newsItem.imageUrl = imageUrl || newsItem.imageUrl;
-    newsItem.isFeatured = isFeatured || newsItem.isFeatured;
-    newsItem.tags = tags || newsItem.tags;
-    newsItem.status = status || newsItem.status;
-
-    const updatedNews = await newsItem.save();
-    res.json(updatedNews);
+    res.json({ success: true, data: news });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
+    res.status(400).json({ success: false, error: err.message });
   }
 };
 
-// @desc    Delete news
-// @route   DELETE /api/news/:id
-// @access  Private/Admin
+// Delete news
 exports.deleteNews = async (req, res) => {
   try {
-    const newsItem = await News.findById(req.params.id);
-
-    if (!newsItem) {
-      return res.status(404).json({ error: "News not found" });
+    const news = await News.findByIdAndDelete(req.params.id);
+    if (!news) {
+      return res.status(404).json({ success: false, error: 'News not found' });
     }
-
-    await newsItem.remove();
-    res.json({ message: "News removed" });
+    res.json({ success: true, data: {} });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+// Get news statistics
+exports.getNewsStats = async (req, res) => {
+  try {
+    const stats = await News.aggregate([
+      {
+        $group: {
+          _id: '$status',
+          count: { $sum: 1 }
+        }
+      }
+    ]);
+    res.json({ success: true, data: stats });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 };

@@ -7,9 +7,9 @@ export default function Register() {
   const isAdultFitness = location.pathname.includes("adult-fitness");
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-dark-blue">
+    <section className="py-16 mt-5 bg-[#090040]">
+      <div className="container mx-auto px-4 mt-5">
+        <h2 className="text-3xl font-bold text-center mb-8 text-white">
           Registration <span className="text-gold">Form</span>
         </h2>
 
@@ -20,7 +20,7 @@ export default function Register() {
               to="gymnastics"
               className={`flex-1 py-4 px-6 text-center font-medium ${
                 isGymnastics
-                  ? "bg-gold text-dark-blue"
+                  ? "bg-[#7f48f9] text-white"
                   : "bg-gray-100 hover:bg-gray-200"
               }`}
             >
@@ -30,7 +30,7 @@ export default function Register() {
               to="adult-fitness"
               className={`flex-1 py-4 px-6 text-center font-medium ${
                 isAdultFitness
-                  ? "bg-gold text-dark-blue"
+                  ? "bg-[#7f48f9] text-white "
                   : "bg-gray-100 hover:bg-gray-200"
               }`}
             >

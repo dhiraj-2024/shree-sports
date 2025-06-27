@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import {
@@ -24,11 +24,42 @@ const AdultFitnessForm = () => {
 
   const [showJoiningCalendar, setShowJoiningCalendar] = useState(false);
   const [showDobCalendar, setShowDobCalendar] = useState(false);
+  
+  // Watch the dob field
+  const dob = watch("dob");
+
+  // Calculate age from date of birth
+  const calculateAge = (birthDate) => {
+    if (!birthDate) return 0;
+
+    const today = new Date();
+    const birthDateObj = new Date(birthDate);
+
+    let age = today.getFullYear() - birthDateObj.getFullYear();
+    const monthDiff = today.getMonth() - birthDateObj.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDateObj.getDate())
+    ) {
+      age--;
+    }
+
+    return age;
+  };
+
+  // Update age whenever dob changes
+  useEffect(() => {
+    if (dob) {
+      const calculatedAge = calculateAge(dob);
+      setValue("age", calculatedAge);
+    }
+  }, [dob, setValue]);
 
   // Color scheme (different from gymnastics form)
   const colors = {
-    primary: "#4A6FA5",
-    secondary: "#6B8CBE",
+    primary: "#7979ff",
+    secondary: "#7f48f9",
     light: "#E6F0FF",
     dark: "#2C3E50",
     white: "#FFFFFF",
@@ -96,7 +127,7 @@ const AdultFitnessForm = () => {
     >
       <h2
         className="text-2xl font-bold text-center mb-6 py-2 rounded-lg"
-        style={{ color: colors.white, backgroundColor: colors.primary }}
+        style={{ color: colors.black, backgroundColor: colors.primary }}
       >
         Adult Fitness Registration
       </h2>

@@ -1,3 +1,6 @@
+// /Users/rajputdhiraj/Desktop/shree-sports-academy/client/src/App.jsx
+
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -22,6 +25,7 @@ import GymnasticsRegistrations from "./components/Admin/GymnasticsRegistrations"
 import AdultFitnessRegistrations from "./components/Admin/AdultFitnessRegistrations";
 import ContactRegistrations from "./components/Admin/ContactRegistrations";
 import AdminNews from "./components/Admin/AdminNews";
+import FeedbackManagement from "./components/Admin/FeedbackManagement";
 // import ContactMessages from "./pages/Admin/ContactMessages";
 
 export default function App() {
@@ -127,7 +131,7 @@ export default function App() {
               isAdminAuthenticated ? (
                 <AdminLayout />
               ) : (
-                <Navigate to="/admin/login" replace /> // Changed from dashboard to login
+                <Navigate to="/admin/login" replace /> 
               )
             }
           >
@@ -136,6 +140,7 @@ export default function App() {
             <Route path="gymnastics" element={<GymnasticsRegistrations />} />
             <Route path="adult-fitness" element={<AdultFitnessRegistrations />} />
             <Route path="cantact-data" element={<ContactRegistrations />} />
+            <Route path="feedback" element={<FeedbackManagement />} />
             <Route path="news" element={<AdminNews/>} />
           </Route>
           {/* 404 Page */}

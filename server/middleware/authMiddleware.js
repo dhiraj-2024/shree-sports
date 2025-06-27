@@ -1,24 +1,33 @@
-// /server/middleware/authMiddleware.js
 const jwt = require("jsonwebtoken");
 
 const protect = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
 
-  if (!token) return res.sendStatus(401);
+  if (!token) {
+    return res.status(401).json({
+      error: "Not authorized, no token provided",
+    });
+  }
 
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    req.user = decoded;
     next();
-  });
+  } catch (err) {
+    return res.status(403).json({
+      error: "Not authorized, token failed",
+    });
+  }
 };
 
 const admin = (req, res, next) => {
   if (req.user && req.user.role === "admin") {
     next();
   } else {
-    res.sendStatus(403);
+    res.status(403).json({
+      error: "Not authorized as an admin",
+    });
   }
 };
 

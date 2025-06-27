@@ -9,7 +9,8 @@ import {
   FaBell,
   FaBars,
   FaTimes,
-  FaNewspaper
+  FaNewspaper,
+  FaComments
 } from "react-icons/fa";
 
 const AdminLayout = () => {
@@ -125,6 +126,13 @@ const AdminLayout = () => {
           >
             <FaEnvelope className="mr-3" />
             Messages
+          </Link>
+          <Link
+            to="/admin/feedback"
+            className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
+          >
+            <FaComments className="mr-3" />
+            Feedback Management
           </Link>
           <Link
             to="/admin/news"

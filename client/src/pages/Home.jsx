@@ -1,6 +1,8 @@
 // client/src/pages/Home.jsx
 import { motion } from "framer-motion";
 import HeroSection from "../components/HomeComponents/HeroSection";
+import Feedback from "../components/Feedback";
+
 // import Achievements from "../components/Achievements";
 // import ClassTypes from "../components/ClassTypes";
 // import Testimonials from "../components/Testimonials";
@@ -10,6 +12,7 @@ export default function Home() {
   return (
     <div className="home-page">
       <HeroSection />
+      <Feedback/>
       {/* <Achievements /> */}
       {/* <ClassTypes /> */}
       {/* <Testimonials /> */}

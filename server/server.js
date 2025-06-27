@@ -6,7 +6,10 @@ const connectDB = require("./config/db");
 const gymnasticsRoutes = require("./routes/gymnasticsRoutes");
 const adultFitnessRoutes = require("./routes/adultFitnessRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const feedbackRoutes = require("./routes/feedbackRoutes");
 const newsRoutes = require("./routes/newsRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+
 const morgan = require("morgan");
 
 const app = express();
@@ -46,8 +49,9 @@ connectDB();
 app.use("/api/gymnastics", gymnasticsRoutes);
 app.use("/api/adult-fitness", adultFitnessRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/feedback", feedbackRoutes);
 app.use("/api/news", newsRoutes);
-
+app.use("/api/admin", adminRoutes);
 
 // for admin
 // Add these routes after your existing routes

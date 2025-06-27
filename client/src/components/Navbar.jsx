@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import {
-  FaBars,
-  FaTimes,
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaBars, FaTimes, FaArrowRight } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [pulse, setPulse] = useState(false);
   const location = useLocation();
 
   const navLinks = [
@@ -19,7 +13,6 @@ export default function Navbar() {
     { name: "About", path: "/about" },
     { name: "Gallery", path: "/gallery" },
     { name: "Success Stories", path: "/success-stories" },
-    { name: "Register", path: "/register" },
     { name: "Our Staff", path: "/staff" },
     { name: "News", path: "/news" },
     { name: "Contact", path: "/contact" },
@@ -34,8 +27,17 @@ export default function Navbar() {
       }
     };
 
+    // Trigger pulse animation every 30 seconds
+    const pulseInterval = setInterval(() => {
+      setPulse(true);
+      setTimeout(() => setPulse(false), 2000);
+    }, 2000);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearInterval(pulseInterval);
+    };
   }, []);
 
   useEffect(() => {
@@ -74,32 +76,17 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Social Icons - Desktop */}
-          <div className="hidden lg:flex items-center space-x-4 ml-6">
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
+          {/* Register Button - Desktop */}
+          <div className="hidden lg:flex items-center ml-6">
+            <NavLink
+              to="/register"
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center 
+                bg-gradient-to-r from-[#FF6000] to-[#FF8C00] text-white shadow-lg 
+                ${pulse ? "animate-pulse" : ""} hover:shadow-xl hover:scale-105`}
             >
-              <FaFacebookF size={16} />
-            </a>
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
-            >
-              <FaInstagram size={16} />
-            </a>
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
-            >
-              <FaTwitter size={16} />
-            </a>
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
-            >
-              <FaYoutube size={16} />
-            </a>
+              Register
+              <FaArrowRight className="ml-2 text-xs transition-all group-hover:translate-x-1" />
+            </NavLink>
           </div>
 
           {/* Mobile menu button */}
@@ -141,32 +128,16 @@ export default function Navbar() {
               {link.name}
             </NavLink>
           ))}
-          <div className="flex justify-center space-x-6 pt-4">
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
-            >
-              <FaFacebookF size={20} />
-            </a>
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
-            >
-              <FaInstagram size={20} />
-            </a>
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
-            >
-              <FaTwitter size={20} />
-            </a>
-            <a
-              href="#"
-              className="text-[#FFE6C7] hover:text-[#FF6000] transition-colors duration-300 p-2 rounded-full hover:bg-[#454545]"
-            >
-              <FaYoutube size={20} />
-            </a>
-          </div>
+          {/* Register Button - Mobile */}
+          <NavLink
+            to="/register"
+            className={`block px-4 py-3 rounded-md text-base font-medium transition-colors duration-300 flex items-center 
+              bg-gradient-to-r from-[#FF6000] to-[#FF8C00] text-white shadow-lg 
+              ${pulse ? "animate-pulse" : ""}`}
+          >
+            Register
+            <FaArrowRight className="ml-2 text-xs transition-all group-hover:translate-x-1" />
+          </NavLink>
         </div>
       </div>
     </header>

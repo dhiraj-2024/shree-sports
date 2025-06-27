@@ -1,25 +1,26 @@
 // /Users/rajputdhiraj/Desktop/shree-sports-academy/server/routes/newsRoutes.js
-const express = require("express");
+const express = require('express');
 const {
-    createNews,
-    getAllNews,
-    getNewsById,
-    updateNews,
-    deleteNews,
-    getFeaturedNews,
-} = require("../controllers/newsController");
-const { protect, admin } = require("../middleware/authMiddleware");
+  createNews,
+  getAllNews,
+  getNewsById,
+  updateNews,
+  deleteNews,
+  getFeaturedNews,
+  getNewsStats
+} = require('../controllers/newsController');
 
 const router = express.Router();
 
-router.route("/").get(getAllNews).post(protect, admin, createNews);
+// Public routes
+router.get('/', getAllNews);
+router.get('/featured', getFeaturedNews);
+router.get('/:id', getNewsById);
+router.get('/stats', getNewsStats);
 
-router.route("/featured").get(getFeaturedNews);
-
-router
-    .route("/:id")
-    .get(getNewsById)
-    .put(protect, admin, updateNews)
-    .delete(protect, admin, deleteNews);
+// Admin routes
+router.post('/', createNews);
+router.put('/:id', updateNews);
+router.delete('/:id', deleteNews);
 
 module.exports = router;
