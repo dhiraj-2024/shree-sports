@@ -1,4 +1,3 @@
-// /Users/rajputdhiraj/Desktop/shree-sports-academy/client/src/pages/News.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaCalendarAlt, FaUser, FaArrowRight } from 'react-icons/fa';
@@ -50,16 +49,23 @@ const News = () => {
   if (error) return <div className="text-red-500 text-center py-8">{error}</div>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section className="bg-[#090040] text-white py-20 px-4 sm:px-8 lg:px-16 mt-10 min-h-screen">
+      <div className="text-center mb-14">
+        <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+          Latest <span className="text-orange-500">News & Updates</span>
+        </h2>
+        <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+          Stay up-to-date with everything happening at Shree Sports Academy — events, achievements, announcements, and more.
+        </p>
+      </div>
+
       {/* Featured News Section */}
       {featuredNews.length > 0 && (
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-            Featured News
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mb-16">
+          <h3 className="text-2xl font-semibold mb-6 text-orange-500 border-b border-gray-600 pb-2">🌟 Featured News</h3>
+          <div className="grid md:grid-cols-3 gap-8">
             {featuredNews.map((item) => (
-              <div key={item._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div key={item._id} className="bg-[white] rounded-xl shadow-xl hover:shadow-2xl overflow-hidden transition">
                 {item.imageUrl && (
                   <img
                     src={item.imageUrl}
@@ -68,19 +74,17 @@ const News = () => {
                   />
                 )}
                 <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                  <div className="flex items-center text-sm text-gray-400 mb-2">
                     <FaCalendarAlt className="mr-1" />
                     <span>{formatDate(item.publishedAt)}</span>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                    {item.title}
-                  </h3>
-                  <div className="prose max-w-none line-clamp-3" dangerouslySetInnerHTML={{ __html: item.content }} />
+                  <h4 className="text-xl font-bold text-black mb-2">{item.title}</h4>
+                  <div className="text-gray-700 line-clamp-3" dangerouslySetInnerHTML={{ __html: item.content }} />
                   <Link
                     to={`/news/${item._id}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-800 mt-4"
+                    className="inline-flex items-center text-orange-500 hover:text-orange-400 mt-4"
                   >
-                    Read More <FaArrowRight className="ml-1" />
+                    Read More <FaArrowRight className="ml-2" />
                   </Link>
                 </div>
               </div>
@@ -91,93 +95,86 @@ const News = () => {
 
       {/* All News Section */}
       <div>
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-          Latest News
-        </h2>
-        {news.length === 0 ? (
-          <div className="text-center py-12 text-gray-500">
-            No news articles found.
-          </div>
-        ) : (
-          <>
-            <div className="space-y-6">
-              {news.map((item) => (
-                <div key={item._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                  {item.imageUrl && (
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      className="w-full h-64 object-cover"
-                    />
-                  )}
-                  <div className="p-6">
-                    <div className="flex items-center text-sm text-gray-500 mb-2">
-                      <FaCalendarAlt className="mr-1" />
-                      <span className="mr-4">{formatDate(item.publishedAt)}</span>
-                      <FaUser className="mr-1" />
-                      <span>{item.author}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                      {item.title}
-                    </h3>
-                    <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: item.content }} />
-                    {item.tags && item.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {item.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-gray-100 text-gray-800 text-sm rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+        <h3 className="text-2xl font-semibold mb-6 text-orange-500 border-b border-gray-600 pb-2">📰 All News</h3>
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex justify-center mt-8">
-                <nav className="flex items-center space-x-2">
-                  {page > 1 && (
-                    <button
-                      onClick={() => setPage(page - 1)}
-                      className="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50"
-                      disabled={page === 1}
-                    >
-                      Previous
-                    </button>
+        {news.length === 0 ? (
+          <div className="text-center py-10 text-gray-400">No news articles available.</div>
+        ) : (
+          <div className="space-y-10">
+            {news.map((item) => (
+              <div key={item._id} className="bg-[#7979ff99] rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition">
+                {item.imageUrl && (
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="w-full h-64 object-cover"
+                  />
+                )}
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-gray-400 mb-2">
+                    <FaCalendarAlt className="mr-1" />
+                    <span className="mr-4">{formatDate(item.publishedAt)}</span>
+                    <FaUser className="mr-1" />
+                    <span>{item.author}</span>
+                  </div>
+                  <h4 className="text-2xl font-bold text-white mb-3">{item.title}</h4>
+                  <div className="text-gray-300 prose max-w-none" dangerouslySetInnerHTML={{ __html: item.content }} />
+                  {item.tags?.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-orange-500 text-white text-xs rounded-full"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
                   )}
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => setPage(num)}
-                      className={`px-4 py-2 border rounded-md ${
-                        page === num ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-50'
-                      }`}
-                    >
-                      {num}
-                    </button>
-                  ))}
-                  {page < totalPages && (
-                    <button
-                      onClick={() => setPage(page + 1)}
-                      className="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50"
-                      disabled={page === totalPages}
-                    >
-                      Next
-                    </button>
-                  )}
-                </nav>
+                </div>
               </div>
-            )}
-          </>
+            ))}
+          </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-12">
+            <nav className="flex items-center space-x-2">
+              {page > 1 && (
+                <button
+                  onClick={() => setPage(page - 1)}
+                  className="px-4 py-2 bg-white text-[#090040] font-semibold rounded-md hover:bg-gray-100"
+                >
+                  Previous
+                </button>
+              )}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+                <button
+                  key={num}
+                  onClick={() => setPage(num)}
+                  className={`px-4 py-2 rounded-md font-medium ${
+                    page === num
+                      ? 'bg-orange-500 text-white'
+                      : 'bg-white text-[#090040] hover:bg-gray-100'
+                  }`}
+                >
+                  {num}
+                </button>
+              ))}
+              {page < totalPages && (
+                <button
+                  onClick={() => setPage(page + 1)}
+                  className="px-4 py-2 bg-white text-[#090040] font-semibold rounded-md hover:bg-gray-100"
+                >
+                  Next
+                </button>
+              )}
+            </nav>
+          </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
