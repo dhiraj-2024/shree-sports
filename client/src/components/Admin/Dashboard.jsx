@@ -23,7 +23,7 @@ const Dashboard = () => {
           gymnastics: gymnasticsRes.data.count,
           fitness: fitnessRes.data.count,
           contacts: contactsRes.data.count,
-          recent: [], // You would fetch recent entries here
+          recent: [], 
         });
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
@@ -31,8 +31,7 @@ const Dashboard = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 30000); // Refresh every 30 seconds
-
+    const interval = setInterval(fetchData, 30000); 
     return () => clearInterval(interval);
   }, []);
 
