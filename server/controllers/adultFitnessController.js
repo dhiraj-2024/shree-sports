@@ -6,7 +6,7 @@ exports.submitAdultFitnessForm = async (req, res) => {
     console.log("Request body:", req.body);
 
     // Add CORS headers to response
-    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+    res.header("Access-Control-Allow-Origin", process.env.FRONTEND_BASE_URL || "http://localhost:5173");
     res.header("Access-Control-Allow-Credentials", "true");
 
     // Validate selected days

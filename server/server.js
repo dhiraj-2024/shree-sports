@@ -13,11 +13,11 @@ const adminRoutes = require("./routes/adminRoutes");
 const morgan = require("morgan");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 // Enhanced CORS configuration
 const corsOptions = {
-  origin: process.env.VITE_API_BASE_URL || "http://localhost:5173",
+  origin: process.env.FRONTEND_BASE_URL || "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
