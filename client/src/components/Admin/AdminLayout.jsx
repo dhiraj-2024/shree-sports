@@ -27,7 +27,7 @@ const AdminLayout = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
-    navigate("/admin/login");
+    navigate("/");
   };
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
@@ -47,7 +47,7 @@ const AdminLayout = () => {
         <div className="md:hidden bg-blue-800 text-white">
           <nav className="flex flex-col p-4">
             <Link
-              to="/admin/dashboard"
+              to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/dashboard"
               className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -55,7 +55,7 @@ const AdminLayout = () => {
               Dashboard
             </Link>
             <Link
-              to="/admin/gymnastics"
+              to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/gymnastics"
               className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -63,7 +63,7 @@ const AdminLayout = () => {
               Gymnastics
             </Link>
             <Link
-              to="/admin/adult-fitness"
+              to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/adult-fitness"
               className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -71,7 +71,7 @@ const AdminLayout = () => {
               Fitness
             </Link>
             <Link
-              to="/admin/cantact-data"
+              to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/cantact-data"
               className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -100,42 +100,42 @@ const AdminLayout = () => {
         </div>
         <nav className="mt-4">
           <Link
-            to="/admin/dashboard"
+            to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/dashboard"
             className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
           >
             <FaHome className="mr-3" />
             Dashboard
           </Link>
           <Link
-            to="/admin/gymnastics"
+            to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/gymnastics"
             className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
           >
             <FaUsers className="mr-3" />
             Gymnastics
           </Link>
           <Link
-            to="/admin/adult-fitness"
+            to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/adult-fitness"
             className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
           >
             <FaUsers className="mr-3" />
             Fitness
           </Link>
           <Link
-            to="/admin/cantact-data"
+            to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/contact-data"
             className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
           >
             <FaEnvelope className="mr-3" />
             Messages
           </Link>
           <Link
-            to="/admin/feedback"
+            to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/feedback"
             className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
           >
             <FaComments className="mr-3" />
             Feedback Management
           </Link>
           <Link
-            to="/admin/news"
+            to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/news"
             className="flex items-center px-4 py-3 text-white hover:bg-blue-700 transition"
           >
             <FaNewspaper className="mr-3" />

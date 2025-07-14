@@ -3,6 +3,7 @@ import {
   FaInstagram,
   FaTwitter,
   FaYoutube,
+  FaUser,
   FaPhone,
   FaEnvelope,
   FaMapMarkerAlt,
@@ -12,7 +13,7 @@ import logo from "../assets/shree-logo-transperent.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a1a] text-[#FFE6C7] pt-12 pb-8">
+    <footer className="bg-[#1f193e] text-[#FFE6C7] pt-12 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo + About */}
@@ -63,16 +64,17 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <FaMapMarkerAlt className="text-[#FF6000] mt-1" />
                 <span className="text-sm">
-                  123 Sports Avenue, City, State 12345
+                  infront new TCS Maan, Shree Sports Academy, Phase 3, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pimpri-Chinchwad, Pune, Maharashtra 411057
+India
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaPhone className="text-[#FF6000]" />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">84850 29797 || 94207 03934</span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#FF6000]" />
-                <span className="text-sm">info@shreesportsacademy.com</span>
+                <span className="text-sm">shreesportsa@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -83,17 +85,14 @@ export default function Footer() {
               Follow Us
             </h3>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
-                <FaFacebookF className="text-[#FFE6C7]" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
+              <a href="https://www.instagram.com/shree_sports__academy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
                 <FaInstagram className="text-[#FFE6C7]" />
               </a>
-              <a href="#" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
-                <FaTwitter className="text-[#FFE6C7]" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
+              <a href="https://youtube.com/@shrifsportsacademy?si=LkmOJbBg2k3BOBMe" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
                 <FaYoutube className="text-[#FFE6C7]" />
+              </a>
+               <a href="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/login" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
+                <FaUser className="text-[#FFE6C7]" />
               </a>
             </div>
           </div>
@@ -108,7 +107,7 @@ export default function Footer() {
   
   <a
     href="mailto:code.dhiraj18@gmail.com"
-    className=" text-blue-400 hover:text-orange-300 opacity-50 font-medium transition"
+    className=" text-[#979797] hover:text-orange-300 opacity-50 font-medium transition"
   >
     Contact us for design & development:---- code.dhiraj18@gmail.com
   </a>

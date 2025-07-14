@@ -26,6 +26,8 @@ import AdultFitnessRegistrations from "./components/Admin/AdultFitnessRegistrati
 import ContactRegistrations from "./components/Admin/ContactRegistrations";
 import AdminNews from "./components/Admin/AdminNews";
 import FeedbackManagement from "./components/Admin/FeedbackManagement";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 // import ContactMessages from "./pages/Admin/ContactMessages";
 
 export default function App() {
@@ -122,26 +124,21 @@ export default function App() {
               </>
             }
           />
-
-          {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route
-            path="/admin/*"
-            element={
-              isAdminAuthenticated ? (
-                <AdminLayout />
-              ) : (
-                <Navigate to="/admin/login" replace /> 
-              )
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
+         {/* Admin Routes */}
+          <Route path="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/login" element={<AdminLogin />} />
+          
+          <Route path="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=" element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }>
+            <Route index element={<AdminDashboard />} />
             <Route path="dashboard" element={<AdminDashboard />} />
             <Route path="gymnastics" element={<GymnasticsRegistrations />} />
             <Route path="adult-fitness" element={<AdultFitnessRegistrations />} />
-            <Route path="cantact-data" element={<ContactRegistrations />} />
+            <Route path="contact-data" element={<ContactRegistrations />} />
             <Route path="feedback" element={<FeedbackManagement />} />
-            <Route path="news" element={<AdminNews/>} />
+            <Route path="news" element={<AdminNews />} />
           </Route>
           {/* 404 Page */}
           <Route

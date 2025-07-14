@@ -65,10 +65,11 @@ const GymnasticsForm = () => {
     white: "#FFFFFF",
   };
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/gymnastics/submit",
+        `${API_BASE_URL}/api/gymnastics/submit`,
         data,
         {
           headers: {

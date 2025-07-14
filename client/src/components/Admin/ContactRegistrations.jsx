@@ -29,15 +29,16 @@ const ContactRegistrations = () => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
     const fetchData = async () => {
         try {
             setLoading(true);
             const [contactsRes, statsRes, monthlyRes, dailyRes] = await Promise.all([
-                axios.get("http://localhost:8080/api/contact"),
-                axios.get("http://localhost:8080/api/contact/count"),
-                axios.get("http://localhost:8080/api/contact/monthly-count"),
-                axios.get("http://localhost:8080/api/contact/daily-count"),
+                axios.get(`${API_BASE_URL}/api/contact`),
+                axios.get(`${API_BASE_URL}/api/contact/count`),
+                axios.get(`${API_BASE_URL}/api/contact/monthly-count`),
+                axios.get(`${API_BASE_URL}/api/contact/daily-count`),
             ]);
 
             setContacts(contactsRes.data?.data || contactsRes.data || []);
@@ -58,7 +59,7 @@ const ContactRegistrations = () => {
 
     const updateStatus = async (id, status) => {
         try {
-            await axios.put(`http://localhost:8080/api/contact/${id}/status`, {
+            await axios.put(`${API_BASE_URL}/api/contact/${id}/status`, {
                 status,
             });
             fetchData();
@@ -242,10 +243,11 @@ const ContactRegistrations = () => {
                                             </div>
                                         </td>
                                         <td className="px-4 md:px-6 py-4">
-                                            <div className="text-sm text-gray-900 max-w-xs truncate">
+                                            <div className="text-sm text-gray-900 break-words max-w-2xl">
                                                 {contact.message}
                                             </div>
                                         </td>
+
                                         <td className="px-4 md:px-6 py-4 whitespace-nowrap">
                                             {getStatusBadge(contact.status)}
                                         </td>

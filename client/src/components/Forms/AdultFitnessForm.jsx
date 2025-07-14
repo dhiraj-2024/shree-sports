@@ -74,26 +74,29 @@ const AdultFitnessForm = () => {
     "Saturday",
   ];
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/adult-fitness/submit",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
-      alert(response.data.message || "Registration Successful!");
-      reset();
-    } catch (err) {
-      console.error("Full error:", err);
-      alert(`Submission Error: ${err.response?.data?.error || err.message}`);
-    }
-  };
+const onSubmit = async (data) => {
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/api/adult-fitness/submit`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+
+    alert(response.data.message || "Registration Successful!");
+    reset();
+  } catch (err) {
+    console.error("Full error:", err);
+    alert(`Submission Error: ${err.response?.data?.error || err.message}`);
+  }
+};
+
 
   const handleDateChange = (date, field) => {
     const formattedDate = date.toISOString().split("T")[0];

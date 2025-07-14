@@ -1,3 +1,4 @@
+// /Users/rajputdhiraj/Desktop/shree-sports-academy/server/controllers/feedbackController.js
 const Feedback = require("../models/Feedback");
 
 // @desc    Submit feedback
@@ -40,15 +41,14 @@ exports.getAllFeedback = async (req, res) => {
 // @access  Public
 exports.getApprovedFeedback = async (req, res) => {
   try {
-    const feedback = await Feedback.find({ status: "approved" })
-      .sort("-createdAt")
-      .limit(4);
+    const feedback = await Feedback.find({ status: "approved" }).sort("-createdAt");
     res.json(feedback);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
   }
 };
+
 
 // @desc    Update feedback status
 // @route   PUT /api/feedback/:id

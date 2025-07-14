@@ -97,7 +97,7 @@ const Staff = () => {
       </div>
 
       {/* Future Staff Note */}
-      <div className="mt-20 text-center bg-white/10 backdrop-blur-sm rounded-xl p-8 max-w-4xl mx-auto">
+      {/* <div className="mt-20 text-center bg-white/10 backdrop-blur-sm rounded-xl p-8 max-w-4xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold mb-4">
           <span className="text-orange-500">Growing Team</span> of Experts
         </h3>
@@ -105,10 +105,10 @@ const Staff = () => {
           We're continuously expanding our team of qualified coaches and staff members to provide the best training experience. 
           Stay tuned for more announcements as we welcome new talent to our academy!
         </p>
-      </div>
+      </div> */}
 
       {/* CTA Section */}
-      <div className="mt-20 text-center">
+      {/* <div className="mt-20 text-center">
         <h3 className="text-3xl font-bold text-white">
           Want to Join Our Coaching Team?
         </h3>
@@ -121,7 +121,7 @@ const Staff = () => {
         >
           Career Opportunities
         </a>
-      </div>
+      </div> */}
     </section>
   );
 };

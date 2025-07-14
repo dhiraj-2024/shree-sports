@@ -1,10 +1,23 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import herobg from '../../assets/images/herobg.png'
 
 export default function HeroSection() {
   return (
     <section className="relative bg-[#090040] overflow-hidden">
+      {/* Background Image with Low Opacity */}
+      <div 
+        className="absolute inset-0 z-0 opacity-30"
+        style={{
+          backgroundImage: `url(${herobg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          filter: 'grayscale(100%) sepia(100%) hue-rotate(200deg) saturate(500%) brightness(0.5)'
+        }}
+      ></div>
+
       {/* Background Gradient & Decorative Elements */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#FF6000] to-[#090040] mix-blend-overlay"></div>
@@ -37,7 +50,7 @@ export default function HeroSection() {
             <span className="font-semibold text-[#FFA559]">
               Shree Sports Academy
             </span>{" "}
-            and train with the best coaches to achieve excellence in your sport.
+            Elevate Your Gymnastics Skills with World-Class Coaching
           </motion.p>
 
           {/* Register Now Button (With Animation) */}
@@ -65,11 +78,11 @@ export default function HeroSection() {
             className="mt-16 grid grid-cols-3 gap-4 text-center"
           >
             <div className="p-4 bg-[#090040]/50 backdrop-blur-sm border border-[#FF6000]/20 rounded-lg">
-              <h3 className="text-3xl font-bold text-[#FF6000]">50+</h3>
+              <h3 className="text-3xl font-bold text-[#FF6000]">250+</h3>
               <p className="text-[#FFE6C7] text-sm">Trained Athletes</p>
             </div>
             <div className="p-4 bg-[#090040]/50 backdrop-blur-sm border border-[#FF6000]/20 rounded-lg">
-              <h3 className="text-3xl font-bold text-[#FF6000]">10+</h3>
+              <h3 className="text-3xl font-bold text-[#FF6000]">5+</h3>
               <p className="text-[#FFE6C7] text-sm">Sports Disciplines</p>
             </div>
             <div className="p-4 bg-[#090040]/50 backdrop-blur-sm border border-[#FF6000]/20 rounded-lg">

@@ -2,21 +2,15 @@
 import { motion } from "framer-motion";
 import HeroSection from "../components/HomeComponents/HeroSection";
 import Feedback from "../components/Feedback";
-
-// import Achievements from "../components/Achievements";
-// import ClassTypes from "../components/ClassTypes";
-// import Testimonials from "../components/Testimonials";
-// import CTA from "../components/CTA";
+import HomeAbout from "../components/HomeComponents/HomeAbout";
 
 export default function Home() {
   return (
     <div className="home-page">
+
       <HeroSection />
+      <HomeAbout/>
       <Feedback/>
-      {/* <Achievements /> */}
-      {/* <ClassTypes /> */}
-      {/* <Testimonials /> */}
-      {/* <CTA /> */}
     </div>
   );
 }

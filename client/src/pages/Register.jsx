@@ -15,10 +15,10 @@ export default function Register() {
 
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
           {/* Form Tabs */}
-          <div className="flex border-b border-gray-200">
+          <div className="flex border-b border-gray-400">
             <Link
               to="gymnastics"
-              className={`flex-1 py-4 px-6 text-center font-medium ${
+              className={`flex-1 py-4 px-6 text-center border-r border-gray-400 font-medium ${
                 isGymnastics
                   ? "bg-[#7f48f9] text-white"
                   : "bg-gray-100 hover:bg-gray-200"

@@ -18,11 +18,13 @@ const AdminNews = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentNews, setCurrentNews] = useState(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:8080/api/news');
+        const res = await axios.get(`${API_BASE_URL}/api/news`);
         setNews(res.data.data || []);
         setFilteredNews(res.data.data || []);
       } catch (err) {
@@ -49,7 +51,7 @@ const AdminNews = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this news item?')) {
       try {
-        await axios.delete(`http://localhost:8080/api/news/${id}`);
+        await axios.delete(`${API_BASE_URL}/api/news/${id}`);
         setNews(news.filter(item => item._id !== id));
         toast.success('News deleted successfully');
       } catch (err) {
@@ -60,7 +62,7 @@ const AdminNews = () => {
 
   const toggleFeatured = async (id, currentStatus) => {
     try {
-      const res = await axios.put(`http://localhost:8080/api/news/${id}`, { isFeatured: !currentStatus });
+      const res = await axios.put(`${API_BASE_URL}/api/news/${id}`, { isFeatured: !currentStatus });
       setNews(news.map(item => item._id === id ? res.data.data : item));
       toast.success(`News ${!currentStatus ? 'added to' : 'removed from'} featured`);
     } catch (err) {
@@ -71,7 +73,7 @@ const AdminNews = () => {
   const toggleStatus = async (id, currentStatus) => {
     const newStatus = currentStatus === 'published' ? 'draft' : 'published';
     try {
-      const res = await axios.put(`http://localhost:8080/api/news/${id}`, { status: newStatus });
+      const res = await axios.put(`${API_BASE_URL}/api/news/${id}`, { status: newStatus });
       setNews(news.map(item => item._id === id ? res.data.data : item));
       toast.success(`News marked as ${newStatus}`);
     } catch (err) {
@@ -93,11 +95,11 @@ const AdminNews = () => {
     try {
       let res;
       if (currentNews) {
-        res = await axios.put(`http://localhost:8080/api/news/${currentNews._id}`, formData);
+        res = await axios.put(`${API_BASE_URL}/api/news/${currentNews._id}`, formData);
         setNews(news.map(item => item._id === currentNews._id ? res.data.data : item));
         toast.success('News updated successfully');
       } else {
-        res = await axios.post('http://localhost:8080/api/news', formData);
+        res = await axios.post(`${API_BASE_URL}/api/news`, formData);
         setNews([res.data.data, ...news]);
         toast.success('News created successfully');
       }

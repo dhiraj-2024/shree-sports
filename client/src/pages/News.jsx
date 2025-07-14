@@ -16,9 +16,10 @@ const News = () => {
     const fetchNews = async () => {
       try {
         setLoading(true);
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
         const [featuredRes, newsRes] = await Promise.all([
-          axios.get('http://localhost:8080/api/news/featured'),
-          axios.get(`http://localhost:8080/api/news?page=${page}`)
+          axios.get(`${API_BASE_URL}/api/news/featured`),
+          axios.get(`${API_BASE_URL}/api/news?page=${page}`)
         ]);
 
         setFeaturedNews(featuredRes.data.data || []);
@@ -80,12 +81,12 @@ const News = () => {
                   </div>
                   <h4 className="text-xl font-bold text-black mb-2">{item.title}</h4>
                   <div className="text-gray-700 line-clamp-3" dangerouslySetInnerHTML={{ __html: item.content }} />
-                  <Link
+                  {/* <Link
                     to={`/news/${item._id}`}
                     className="inline-flex items-center text-orange-500 hover:text-orange-400 mt-4"
                   >
                     Read More <FaArrowRight className="ml-2" />
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             ))}

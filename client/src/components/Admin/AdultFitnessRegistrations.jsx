@@ -32,16 +32,16 @@ const AdultFitnessRegistrations = () => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
     const fetchData = async () => {
         try {
             setLoading(true);
             const [registrationsRes, statsRes, monthlyRes, dailyRes] =
                 await Promise.all([
-                    axios.get("http://localhost:8080/api/adult-fitness"),
-                    axios.get("http://localhost:8080/api/adult-fitness/count"),
-                    axios.get("http://localhost:8080/api/adult-fitness/monthly-count"),
-                    axios.get("http://localhost:8080/api/adult-fitness/daily-count"),
+                    axios.get(`${API_BASE_URL}/api/adult-fitness`),
+                    axios.get(`${API_BASE_URL}/api/adult-fitness/count`),
+                    axios.get(`${API_BASE_URL}/api/adult-fitness/monthly-count`),
+                    axios.get(`${API_BASE_URL}/api/adult-fitness/daily-count`),
                 ]);
 
             // Ensure registrations is always an array

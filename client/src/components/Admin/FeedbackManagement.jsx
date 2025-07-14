@@ -1,3 +1,4 @@
+// /Users/rajputdhiraj/Desktop/shree-sports-academy/client/src/components/Admin/FeedbackManagement.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaCheck, FaTimes, FaStar } from "react-icons/fa";
@@ -8,11 +9,14 @@ const FeedbackManagement = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+
+
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:8080/api/feedback");
+        const res = await axios.get(`${API_BASE_URL}/api/feedback`);
         setFeedback(res.data);
       } catch (err) {
         setError(
@@ -28,7 +32,7 @@ const FeedbackManagement = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      const res = await axios.put(`http://localhost:8080/api/feedback/${id}`, {
+      const res = await axios.put(`${API_BASE_URL}/api/feedback/${id}`, {
         status,
       });
       setFeedback((prev) =>

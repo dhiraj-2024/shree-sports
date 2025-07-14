@@ -9,14 +9,15 @@ const Dashboard = () => {
     contacts: 0,
     recent: [],
   });
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [gymnasticsRes, fitnessRes, contactsRes] = await Promise.all([
-          axios.get("http://localhost:8080/api/gymnastics/count"),
-          axios.get("http://localhost:8080/api/adult-fitness/count"),
-          axios.get("http://localhost:8080/api/contact/count"),
+          axios.get(`${API_BASE_URL}/api/gymnastics/count`),
+          axios.get(`${API_BASE_URL}/api/adult-fitness/count`),
+          axios.get(`${API_BASE_URL}/api/contact/count`),
         ]);
 
         setStats({
