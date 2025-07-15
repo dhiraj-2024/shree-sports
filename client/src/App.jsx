@@ -15,6 +15,11 @@ import PageNotFound from "./pages/PageNotFound";
 // Admin Components
 import AdminLayout from "./components/Admin/AdminLayout";
 import AdminDashboard from "./components/Admin/Dashboard";
+import GymnasticsRegistrations from "./components/Admin/GymnasticsRegistrations";
+import AdultFitnessRegistrations from "./components/Admin/AdultFitnessRegistrations";
+import ContactRegistrations from "./components/Admin/ContactRegistrations";
+import AdminNews from "./components/Admin/AdminNews";
+import FeedbackManagement from "./components/Admin/FeedbackManagement";
 
 export default function App() {
   return (
@@ -36,6 +41,11 @@ export default function App() {
           <Route path="/shreeadmin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="gymnastics" element={<GymnasticsRegistrations />} />
+            <Route path="adult-fitness" element={<AdultFitnessRegistrations />} />
+            <Route path="contact-data" element={<ContactRegistrations />} />
+            <Route path="feedback" element={<FeedbackManagement />} />
+            <Route path="news" element={<AdminNews />} />
           </Route>
           
           {/* 404 Page */}
