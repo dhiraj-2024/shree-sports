@@ -25,10 +25,22 @@ const AdminLayout = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminToken");
-    navigate("/");
+    const handleLogout = () => {
+    clearAuthData();
+    navigate("/shreeadmin/login");
   };
+   useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem('adminToken');
+      const expiry = localStorage.getItem('adminTokenExpiry');
+      
+      if (!token || !expiry || Date.now() > parseInt(expiry, 10)) {
+        handleLogout();
+      }
+    };
+    
+    checkAuth();
+  }, []);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 

@@ -1,13 +1,15 @@
-// /Users/rajputdhiraj/Desktop/shree-sports-academy/client/src/pages/Login.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaLock, FaEnvelope } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { validateEmail } from "../utils/validators";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,47 +18,57 @@ const Login = () => {
     const ADMIN_EMAIL = import.meta.env.VITE_APP_ADMIN_EMAIL;
     const ADMIN_PASSWORD = import.meta.env.VITE_APP_ADMIN_PASSWORD;
 
-    useEffect(() => {
-        // Clear any existing auth data when loading login page
-        localStorage.removeItem('adminToken');
-    }, []);
+    if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+        console.error("Admin credentials not configured in environment variables");
+        toast.error("System configuration error. Please contact support.");
+    }
 
-    const handleSubmit = async (e) => {
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
 
         try {
-            // Basic validation
-            if (!email || !password) {
-                throw new Error("Please enter both email and password");
+            // Validate inputs
+            if (!formData.email || !formData.password) {
+                throw new Error("Both email and password are required");
+            }
+
+            if (!validateEmail(formData.email)) {
+                throw new Error("Please enter a valid email address");
             }
 
             // Check credentials
-            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-                // Generate a simple token (in production, use JWT from backend)
-                const token = btoa(`${email}:${Date.now()}`);
+            if (formData.email === ADMIN_EMAIL && formData.password === ADMIN_PASSWORD) {
+                // Create a simple token (in a real app, this would come from a backend)
+                const token = btoa(`${formData.email}:${Date.now()}`);
+                const expiryTime = Date.now() + 8 * 60 * 60 * 1000; // 8 hours
+
                 localStorage.setItem('adminToken', token);
-                
-                // Set expiration (8 hours)
-                localStorage.setItem('adminTokenExpiry', Date.now() + 8 * 60 * 60 * 1000);
-                
+                localStorage.setItem('adminTokenExpiry', expiryTime.toString());
+
                 // Redirect to dashboard or intended path
                 const redirectTo = location.state?.from?.pathname || "/shreeadmin/dashboard";
-                navigate(redirectTo, { replace: true });
-                
+                navigate(redirectTo);
+
                 toast.success("Login successful!");
             } else {
                 throw new Error("Invalid credentials");
             }
         } catch (err) {
             toast.error(err.message);
+            console.error("Login error:", err);
         } finally {
             setIsLoading(false);
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold text-center mb-6 text-blue-600">
                     Admin Login
@@ -64,32 +76,41 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block mb-1 font-medium">Email</label>
+                        <label htmlFor="email" className="block mb-1 font-medium">
+                            Email
+                        </label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <FaEnvelope className="text-gray-400" />
                             </div>
                             <input
+                                id="email"
+                                name="email"
                                 type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={formData.email}
+                                onChange={handleInputChange}
                                 className="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                                 autoComplete="username"
+                                autoFocus
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block mb-1 font-medium">Password</label>
+                        <label htmlFor="password" className="block mb-1 font-medium">
+                            Password
+                        </label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <FaLock className="text-gray-400" />
                             </div>
                             <input
+                                id="password"
+                                name="password"
                                 type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                value={formData.password}
+                                onChange={handleInputChange}
                                 className="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                                 autoComplete="current-password"
@@ -100,7 +121,8 @@ const Login = () => {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200 disabled:opacity-70 flex justify-center items-center"
+                        className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                        aria-label={isLoading ? "Authenticating" : "Login"}
                     >
                         {isLoading ? (
                             <>

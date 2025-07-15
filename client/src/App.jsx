@@ -1,6 +1,3 @@
-// /Users/rajputdhiraj/Desktop/shree-sports-academy/client/src/App.jsx
-
-
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -28,129 +25,43 @@ import AdminNews from "./components/Admin/AdminNews";
 import FeedbackManagement from "./components/Admin/FeedbackManagement";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-// import ContactMessages from "./pages/Admin/ContactMessages";
-
 export default function App() {
-  const isAdminAuthenticated = !!localStorage.getItem('adminToken');
-
   return (
     <Router>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
-        {/* Main App Routes */}
         <Routes>
           {/* Public Routes */}
-          <Route
-            path="/"
-            element={
-              <>
-                <Navbar />
-                <Home />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <>
-                <Navbar />
-                <About />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/gallery"
-            element={
-              <>
-                <Navbar />
-                <Gallery />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/success-stories"
-            element={
-              <>
-                <Navbar />
-                <SuccessStories />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <>
-                <Navbar />
-                <Register />
-                <Footer />
-              </>
-            }
-          >
+          <Route path="/" element={<><Navbar /><Home /><Footer /></>} />
+          <Route path="/about" element={<><Navbar /><About /><Footer /></>} />
+          <Route path="/gallery" element={<><Navbar /><Gallery /><Footer /></>} />
+          <Route path="/success-stories" element={<><Navbar /><SuccessStories /><Footer /></>} />
+          <Route path="/register" element={<><Navbar /><Register /><Footer /></>}>
             <Route index element={<GymnasticsForm />} />
             <Route path="gymnastics" element={<GymnasticsForm />} />
             <Route path="adult-fitness" element={<AdultFitnessForm />} />
           </Route>
-          <Route
-            path="/staff"
-            element={
-              <>
-                <Navbar />
-                <Staff />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/news"
-            element={
-              <>
-                <Navbar />
-                <News />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <>
-                <Navbar />
-                <Contact />
-                <Footer />
-              </>
-            }
-          />
-         {/* Admin Routes */}
+          <Route path="/staff" element={<><Navbar /><Staff /><Footer /></>} />
+          <Route path="/news" element={<><Navbar /><News /><Footer /></>} />
+          <Route path="/contact" element={<><Navbar /><Contact /><Footer /></>} />
+          
+          {/* Admin Routes */}
           <Route path="/shreeadmin/login" element={<AdminLogin />} />
           
-          <Route path="/shreeadmin" element={
-            <ProtectedRoute>
-              <AdminLayout />
-            </ProtectedRoute>
-          }>
-            <Route index element={<AdminDashboard />} />
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="gymnastics" element={<GymnasticsRegistrations />} />
-            <Route path="adult-fitness" element={<AdultFitnessRegistrations />} />
-            <Route path="contact-data" element={<ContactRegistrations />} />
-            <Route path="feedback" element={<FeedbackManagement />} />
-            <Route path="news" element={<AdminNews />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/shreeadmin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="gymnastics" element={<GymnasticsRegistrations />} />
+              <Route path="adult-fitness" element={<AdultFitnessRegistrations />} />
+              <Route path="contact-data" element={<ContactRegistrations />} />
+              <Route path="feedback" element={<FeedbackManagement />} />
+              <Route path="news" element={<AdminNews />} />
+            </Route>
           </Route>
+          
           {/* 404 Page */}
-          <Route
-            path="*"
-            element={
-              <>
-                <Navbar />
-                <PageNotFound />
-                <Footer />
-              </>
-            }
-          />
+          <Route path="*" element={<><Navbar /><PageNotFound /><Footer /></>} />
         </Routes>
       </div>
     </Router>
