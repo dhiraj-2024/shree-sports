@@ -258,7 +258,7 @@ const SuccessStories = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-20">
+        {/* <div className="text-center mt-20">
           <h3 className="text-3xl font-bold text-white mb-4">
             Ready to Begin Your Success Story?
           </h3>
@@ -271,7 +271,7 @@ const SuccessStories = () => {
         >
           Register Now
         </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

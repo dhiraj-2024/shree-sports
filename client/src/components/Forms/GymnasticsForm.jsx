@@ -114,7 +114,7 @@ const GymnasticsForm = () => {
 
   return (
     <div
-      className="max-w-3xl mx-auto p-6 rounded-xl mt-10 shadow-lg"
+      className="max-w-3xl mx-auto  rounded-xl mt-10 shadow-lg"
       style={{ backgroundColor: colors.light }}
     >
       <h2
@@ -126,7 +126,7 @@ const GymnasticsForm = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-lg"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 p-2 rounded-lg"
         style={{ backgroundColor: colors.white }}
       >
         {/* Name */}
@@ -193,7 +193,7 @@ const GymnasticsForm = () => {
                     ? new Date(watch("joiningDate"))
                     : new Date()
                 }
-                className="border rounded shadow-lg"
+                className="border rounded shadow-lg p-4 -mr-10 "
               />
             </div>
           )}
@@ -239,7 +239,7 @@ const GymnasticsForm = () => {
                 onChange={(date) => handleDateChange(date, "dob")}
                 value={watch("dob") ? new Date(watch("dob")) : new Date()}
                 maxDate={new Date()}
-                className="border rounded shadow-lg"
+                className="border rounded shadow-lg p-4 -mr-10"
               />
             </div>
           )}

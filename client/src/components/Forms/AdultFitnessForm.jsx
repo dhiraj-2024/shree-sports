@@ -125,7 +125,7 @@ const onSubmit = async (data) => {
 
   return (
     <div
-      className="max-w-3xl mx-auto p-6 rounded-xl mt-10 shadow-lg"
+      className="max-w-3xl mx-auto  rounded-xl mt-10 shadow-lg"
       style={{ backgroundColor: colors.light }}
     >
       <h2
@@ -137,7 +137,7 @@ const onSubmit = async (data) => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-lg"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 p-2 rounded-lg"
         style={{ backgroundColor: colors.white }}
       >
         {/* Name */}
@@ -189,14 +189,14 @@ const onSubmit = async (data) => {
             <button
               type="button"
               onClick={() => setShowJoiningCalendar(!showJoiningCalendar)}
-              className="px-3 rounded-r"
+              className="px-3 rounded-r "
               style={{ backgroundColor: colors.secondary, color: colors.white }}
             >
               <FaCalendarAlt />
             </button>
           </div>
           {showJoiningCalendar && (
-            <div className="absolute z-10 mt-1">
+            <div className="absolute z-10 mt-1 ">
               <Calendar
                 onChange={(date) => handleDateChange(date, "joiningDate")}
                 value={
@@ -204,7 +204,7 @@ const onSubmit = async (data) => {
                     ? new Date(watch("joiningDate"))
                     : new Date()
                 }
-                className="border rounded shadow-lg"
+                className="border rounded shadow-lg p-4 -mr-10 "
               />
             </div>
           )}
@@ -250,7 +250,7 @@ const onSubmit = async (data) => {
                 onChange={(date) => handleDateChange(date, "dob")}
                 value={watch("dob") ? new Date(watch("dob")) : new Date()}
                 maxDate={new Date()}
-                className="border rounded shadow-lg"
+                className="border rounded shadow-lg p-4 -mr-10"
               />
             </div>
           )}
