@@ -8,10 +8,14 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/shree-logo-transperent.png";
+import LoginModal from "./LoginModal";
+
 
 export default function Footer() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   return (
     <footer className="bg-[#1f193e] text-[#FFE6C7] pt-12 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,9 +95,13 @@ India
               <a href="https://youtube.com/@shrifsportsacademy?si=LkmOJbBg2k3BOBMe" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
                 <FaYoutube className="text-[#FFE6C7]" />
               </a>
-              <a href="/shreeadmin/login" className="w-10 h-10 bg-[#2e2e2e] rounded-full flex items-center justify-center hover:bg-[#FF6000] transition">
-                <FaUser className="text-[#FFE6C7]" />
-              </a>
+              <button 
+              onClick={() => setIsLoginModalOpen(true)}
+              className="flex items-center hover:text-blue-300 transition"
+              aria-label="Admin Login"
+            >
+              <FaUser className="mr-2" />
+            </button>
             </div>
           </div>
         </div>
@@ -114,6 +122,11 @@ India
 </div>
 
       </div>
+       {/* Login Modal */}
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </footer>
   );
 }
