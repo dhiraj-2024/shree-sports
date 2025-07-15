@@ -26,8 +26,7 @@ const AdminLayout = () => {
   }, []);
 
     const handleLogout = () => {
-    clearAuthData();
-    navigate("/shreeadmin/login");
+    navigate("/");
   };
    useEffect(() => {
     const checkAuth = () => {
@@ -175,9 +174,9 @@ const AdminLayout = () => {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center text-gray-600 hover:text-gray-900"
+              className="flex items-center cursor-pointer font-extrabold border-1 px-2 rounded text-gray-600 hover:text-gray-900"
             >
-              <FaSignOutAlt className="mr-2" />
+              <FaSignOutAlt className="mr-2 text-red-600 text-[20px]" />
               Logout
             </button>
           </div>
