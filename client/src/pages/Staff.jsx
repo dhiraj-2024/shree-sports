@@ -2,8 +2,8 @@ import React from "react";
 import { FaMedal, FaUserTie, FaChalkboardTeacher, FaAward } from "react-icons/fa";
 
 // Import staff images (replace with actual imports)
-import ShrikantRathod from "../assets/images/staff/shrikantdummy.jpg";
-import SandeshBhosle from "../assets/images/staff/sandesh.jpg";
+// import ShrikantRathod from "../assets/images/staff/shrikantdummy.jpg";
+// import SandeshBhosle from "../assets/images/staff/sandesh.jpg";
 
 const Staff = () => {
   const staffMembers = [
@@ -12,7 +12,7 @@ const Staff = () => {
       name: "Shrikant Devidas Rathod",
       role: "Founder & International Coach",
       bio: "Founder of Shree Sports Academy Gymnastics Center, Mr. Rathod is a dedicated gymnastics coach with a passion for developing young athletes. Since starting the academy in 2020, he has worked tirelessly to promote fitness, discipline, and skill-based training among children. His vision and leadership continue to drive the academy's success.",
-      image: ShrikantRathod,
+      // image: ShrikantRathod,
       achievements: [
         "Founded Shree Sports Academy in 2020",
         "International coaching certification",
@@ -24,7 +24,7 @@ const Staff = () => {
       name: "Sandesh Sunil Bhosle",
       role: "Head Coach",
       bio: "Sandesh Bhosle is the Head Coach at Shree Sports Academy Gymnastics Center. With a strong background in gymnastics training and coaching, he is known for his structured approach, motivational teaching style, and commitment to athlete development. He plays a key role in mentoring students and preparing them for both recreational and competitive levels.",
-      image: SandeshBhosle,
+      // image: SandeshBhosle,
       achievements: [
         "Head Coach since 2020",
         "Specializes in competitive training",
