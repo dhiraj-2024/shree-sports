@@ -27,7 +27,7 @@ const AdminLayout = () => {
 
     const handleLogout = () => {
     clearAuthData();
-    navigate("/shreeadmin/login");
+    navigate("/");
   };
    useEffect(() => {
     const checkAuth = () => {
