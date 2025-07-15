@@ -26,6 +26,10 @@ const AdminLayout = () => {
   }, []);
 
     const handleLogout = () => {
+<<<<<<< HEAD
+=======
+    clearAuthData();
+>>>>>>> a6946d9b8a2aa76380853aa1350f11109b40acf7
     navigate("/");
   };
    useEffect(() => {
