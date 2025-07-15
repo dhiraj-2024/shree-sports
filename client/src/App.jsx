@@ -125,9 +125,9 @@ export default function App() {
             }
           />
          {/* Admin Routes */}
-          <Route path="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/login" element={<AdminLogin />} />
+          <Route path="/shreeadmin/login" element={<AdminLogin />} />
           
-          <Route path="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=" element={
+          <Route path="/shreeadmin" element={
             <ProtectedRoute>
               <AdminLayout />
             </ProtectedRoute>

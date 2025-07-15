@@ -17,7 +17,7 @@ export const isAuthenticated = () => {
 export const logout = () => {
     localStorage.removeItem('adminToken');
     localStorage.removeItem('adminTokenExpiry');
-    window.location.href = '/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/login'; 
+    window.location.href = '/shreeadmin/login'; 
 };
 
 export const getAuthToken = () => {

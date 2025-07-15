@@ -41,7 +41,7 @@ const Login = () => {
                 localStorage.setItem('adminTokenExpiry', Date.now() + 8 * 60 * 60 * 1000);
                 
                 // Redirect to dashboard or intended path
-                const redirectTo = location.state?.from?.pathname || "/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/dashboard";
+                const redirectTo = location.state?.from?.pathname || "/shreeadmin/dashboard";
                 navigate(redirectTo, { replace: true });
                 
                 toast.success("Login successful!");
