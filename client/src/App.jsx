@@ -6,6 +6,8 @@ import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import SuccessStories from "./components/SuccessStories";
 import Register from "./pages/Register";
+import GymnasticsForm from "./components/Forms/GymnasticsForm";
+import AdultFitnessForm from "./components/Forms/AdultFitnessForm";
 import Staff from "./pages/Staff";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
@@ -32,7 +34,11 @@ export default function App() {
           <Route path="/about" element={<><Navbar /><About /><Footer /></>} />
           <Route path="/gallery" element={<><Navbar /><Gallery /><Footer /></>} />
           <Route path="/success-stories" element={<><Navbar /><SuccessStories /><Footer /></>} />
-          <Route path="/register" element={<><Navbar /><Register /><Footer /></>} />
+            <Route path="/register" element={<><Navbar /><Register /><Footer /></>}>
+            <Route index element={<GymnasticsForm />} />
+            <Route path="gymnastics" element={<GymnasticsForm />} />
+            <Route path="adult-fitness" element={<AdultFitnessForm />} />
+          </Route>
           <Route path="/staff" element={<><Navbar /><Staff /><Footer /></>} />
           <Route path="/news" element={<><Navbar /><News /><Footer /></>} />
           <Route path="/contact" element={<><Navbar /><Contact /><Footer /></>} />
