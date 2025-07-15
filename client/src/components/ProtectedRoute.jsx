@@ -1,3 +1,4 @@
+// /Users/rajputdhiraj/Desktop/shree-sports-academy/client/src/components/ProtectedRoute.jsx
 import { Navigate, useLocation } from "react-router-dom";
 import { isAuthenticated } from "../utils/auth";
 
