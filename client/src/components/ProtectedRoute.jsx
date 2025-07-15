@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }) => {
     
     if (!isAuthenticated()) {
         // Redirect to login page, saving the current location they were trying to go to
-        return <Navigate to="/shreeadmin/login" state={{ from: location }} replace />;
+        return <Navigate to="/ZyH1W3pfRJ4O70JO32KEcYlA9yKELWFfNGovBVxJFcE=/login" state={{ from: location }} replace />;
     }
 
     return children;
