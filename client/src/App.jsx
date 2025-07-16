@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -25,7 +25,7 @@ import FeedbackManagement from "./components/Admin/FeedbackManagement";
 
 export default function App() {
   return (
-    <Router>
+    <HashRouter>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Routes>
@@ -58,6 +58,7 @@ export default function App() {
           <Route path="*" element={<><Navbar /><PageNotFound /><Footer /></>} />
         </Routes>
       </div>
-    </Router>
+
+    </HashRouter>
   );
 }
