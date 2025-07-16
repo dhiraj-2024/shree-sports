@@ -2,7 +2,7 @@ import React from "react";
 import { FaMedal, FaUserTie, FaChalkboardTeacher, FaAward } from "react-icons/fa";
 
 // Import staff images (replace with actual imports)
-// import ShrikantRathod from "../assets/images/staff/shrikantdummy.jpg";
+import shreekant from "../assets/images/staff/shreekant.jpg";
 // import SandeshBhosle from "../assets/images/staff/sandesh.jpg";
 
 const Staff = () => {
@@ -12,7 +12,7 @@ const Staff = () => {
       name: "Shrikant Devidas Rathod",
       role: "Founder & International Coach",
       bio: "Founder of Shree Sports Academy Gymnastics Center, Mr. Rathod is a dedicated gymnastics coach with a passion for developing young athletes. Since starting the academy in 2020, he has worked tirelessly to promote fitness, discipline, and skill-based training among children. His vision and leadership continue to drive the academy's success.",
-      // image: ShrikantRathod,
+      image: shreekant,
       achievements: [
         "Founded Shree Sports Academy in 2020",
         "International coaching certification",
