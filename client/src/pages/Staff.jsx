@@ -2,7 +2,7 @@ import React from "react";
 import { FaMedal, FaUserTie, FaChalkboardTeacher, FaAward } from "react-icons/fa";
 
 // Import staff images (replace with actual imports)
-import shreekant from "../assets/images/staff/shreekant.jpg";
+import shreekant from "../assets/images/staff/shreekant.jpeg";
 // import SandeshBhosle from "../assets/images/staff/sandesh.jpg";
 
 const Staff = () => {
