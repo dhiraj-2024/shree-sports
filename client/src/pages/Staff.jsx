@@ -2,8 +2,8 @@ import React from "react";
 import { FaMedal, FaUserTie, FaChalkboardTeacher, FaAward } from "react-icons/fa";
 
 // Import staff images (replace with actual imports)
-import shreekant from "../assets/images/staff/shreekant.jpeg";
-// import SandeshBhosle from "../assets/images/staff/sandesh.jpg";
+import shreekant from "../assets/images/staff/shreekant.png";
+import Sandesh from "../assets/images/staff/sandesh.png";
 
 const Staff = () => {
   const staffMembers = [
@@ -24,7 +24,7 @@ const Staff = () => {
       name: "Sandesh Sunil Bhosle",
       role: "Head Coach",
       bio: "Sandesh Bhosle is the Head Coach at Shree Sports Academy Gymnastics Center. With a strong background in gymnastics training and coaching, he is known for his structured approach, motivational teaching style, and commitment to athlete development. He plays a key role in mentoring students and preparing them for both recreational and competitive levels.",
-      // image: SandeshBhosle,
+      image: Sandesh,
       achievements: [
         "Head Coach since 2020",
         "Specializes in competitive training",

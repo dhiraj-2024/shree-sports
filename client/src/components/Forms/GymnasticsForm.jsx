@@ -488,6 +488,7 @@ const GymnasticsForm = () => {
             <option value="6 Days">6 Days</option>
             <option value="3 Days (Mon/Wed/Fri)">3 Days (Mon/Wed/Fri)</option>
             <option value="3 Days (Tue/Thu/Sat)">3 Days (Tue/Thu/Sat)</option>
+            <option value="Toddler (Mon/Wed/Fri)">Toddler (Mon/Wed/Fri)</option>
             <option value="Toddler (Tue/Thu/Sat)">Toddler (Tue/Thu/Sat)</option>
           </select>
           {errors.classDays && (
