@@ -249,9 +249,9 @@ const GymnasticsRegistrations = () => {
                   <th className="px-4 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider border-b border-r border-gray-200">
                     Additional Info
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider border-b border-gray-200">
+                  {/* <th className="px-4 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider border-b border-gray-200">
                     Actions
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -350,7 +350,7 @@ const GymnasticsRegistrations = () => {
                     </td>
 
                     {/* Actions Column */}
-                    <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
+                    {/* <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex space-x-2">
                         <button
                           className="text-blue-600 hover:text-blue-900 p-1 rounded hover:bg-blue-50"
@@ -365,7 +365,7 @@ const GymnasticsRegistrations = () => {
                           <FaTrash />
                         </button>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>
